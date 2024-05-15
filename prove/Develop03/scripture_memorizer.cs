@@ -36,7 +36,8 @@ public class Scripture
             {
                 int index = rand.Next(indices.Count);
                 _words[indices[index]].Hide();
-                indices.RemoveAt(index);
+                indices.RemoveAt(index)
+            ;
             }
         }
 
