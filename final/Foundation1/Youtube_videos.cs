@@ -10,6 +10,7 @@ class Video
     public string _title { get; set; }
     public string _author { get; set; }
     public int _length { get; set; }
+    public int _count_video { get; set; }
     public List<Video> videos;
     public Video()
     {
@@ -32,15 +33,18 @@ class Video
         videos.Add(video);
     }
     public string DisplayVideoInformation()
+
     {
         return $"The title is {_title} and the author of the video is {_author} and lasts {_length} seconds.";
 
     }
     public void DisplayVideo()
     {
+        _count_video = 0;
         foreach (var video in videos)
         {
-            Console.WriteLine(video.DisplayVideoInformation());
+            _count_video++;
+            Console.WriteLine($"Video number {_count_video}-{video.DisplayVideoInformation()}");
         }
 
     }
@@ -81,7 +85,7 @@ class Comentarios
         foreach (var comment1 in comments)
         {
             _count++;
-            Console.WriteLine($"{_count}-{comment1.ToString()}this comment was made by{_name}");
+            Console.WriteLine($"{_count}-{comment1.ToString()} this comment was made by {_name}");
 
         }
 
