@@ -1,49 +1,107 @@
 using System.Linq.Expressions;
+using System.Net;
+using System.Runtime.CompilerServices;
+using System;
+using System.Collections;
+using System.IO;
 
-public class Video
+class Video
 {
-    public string _title;
-    public string _author;
-    public int _length;
-    public List<Comment> entries;
-    public override string ToString()
+    public string _title { get; set; }
+    public string _author { get; set; }
+    public int _length { get; set; }
+    public List<Video> videos;
+    public Video()
     {
-
-        return $"The title of your video is{_title} with the author {_author} and the duration is of {_length}";
-
+        videos = new List<Video>();
 
     }
-
-    public void WriteNewEntry()
+    public void SetVideo()
     {
+        Video video = new Video();
         Console.WriteLine("Please enter the title of your video:");
-        string _title = Console.ReadLine();
+        string title = Console.ReadLine();
         Console.WriteLine("Please enter the author of your video:");
-        string _author = Console.ReadLine();
-        Console.WriteLine("Please enter the length of the video:");
-        int _length = int.Parse(Console.ReadLine());
+        string author = Console.ReadLine();
+        Console.WriteLine("Please enter the length of the video(in seconds ):");
+        int length = int.Parse(Console.ReadLine());
 
-
+        video._title = title;
+        video._author = author;
+        video._length = length;
+        videos.Add(video);
     }
-
-
-    public class Comment
+    public string DisplayVideoInformation()
     {
-        public string _name;
-        public string _text;
-        public List<string> comments;
-        public Comment()
+        return $"The title is {_title} and the author of the video is {_author} and lasts {_length} seconds.";
+
+    }
+    public void DisplayVideo()
+    {
+        foreach (var video in videos)
         {
-            comments = new List<Comment>();
-        }
-
-
-        public void WriteyourComment()
-        {
-            Console.WriteLine("Please you can provide de comment about your video please");
-            
-
+            Console.WriteLine(video.DisplayVideoInformation());
         }
 
     }
+
 }
+class Comentarios
+{
+
+    public string _name { get; set; }
+    public string _comment { get; set; }
+    public int _count;
+    public List<Comentarios> comments;
+    public Comentarios()
+    {
+        comments = new List<Comentarios>();
+    }
+    public void WriteaNewComment()
+    {
+
+
+
+        Comentarios comment1 = new Comentarios();
+        Console.WriteLine("Please enter your name");
+        string name = Console.ReadLine();
+        Console.WriteLine("Please enter your comment");
+        string commentario = Console.ReadLine();
+
+
+
+        comment1._comment = commentario;
+        comment1._name = name;
+        comments.Add(comment1);
+
+    }
+    public void DisplayComment()
+    {
+        _count = 0;
+        foreach (var comment1 in comments)
+        {
+            _count++;
+            Console.WriteLine($"{_count}-{comment1.ToString()}this comment was made by{_name}");
+
+        }
+
+
+
+    }
+
+
+
+
+    public override string ToString()
+
+    {
+
+
+        return $"{_comment}";
+
+    }
+
+}
+
+
+
