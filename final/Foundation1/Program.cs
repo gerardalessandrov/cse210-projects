@@ -1,50 +1,31 @@
-using System;
-using System.Formats.Asn1;
-using System.Globalization;
-using System.Threading.Tasks;
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation1 World!");
-        Video v1 = new Video();
 
-        Comentarios c1 = new Comentarios();
-        bool done = false;
-        while (!done)
+        Video video1 = new Video("Introduction to C#", "John Doe", 300);
+        Video video2 = new Video("Object-Oriented Programming Basics", "Jane Smith", 400);
+        Video video3 = new Video("Working with Collections in C#", "Alice Johnson", 250);
+
+
+        video1.AddComment("User1", "Great video!");
+        video1.AddComment("User2", "Thanks for explaining!");
+        video1.AddComment("User3", "Very helpful.");
+
+        video2.AddComment("User4", "I learned a lot from this.");
+        video2.AddComment("User5", "Can you make a video on inheritance?");
+        video2.AddComment("User6", "Nice explanation!");
+
+        video3.AddComment("User7", "Short and sweet!");
+        video3.AddComment("User8", "I have a question.");
+
+
+        List<Video> videos = new List<Video> { video1, video2, video3 };
+
+
+        foreach (var video in videos)
         {
-            Console.WriteLine("1.Please enter information about the video");
-            Console.WriteLine("2.Display the informacion of the video");
-            Console.WriteLine("3.Write a Comment about the video ");
-            Console.WriteLine("4.Print  your Comments ");
-            Console.WriteLine("5.Exit");
-            Console.WriteLine("Choose an option");
-
-            string input = Console.ReadLine();
-            switch (input)
-            {
-                case "1":
-                    v1.SetVideo();
-
-                    break;
-                case "2":
-                    v1.DisplayVideo();
-                    break;
-                case "3":
-                    c1.WriteaNewComment();
-                    break;
-                case "4":
-                    c1.DisplayComment();
-                    break;
-                case "5":
-                    done = true;
-                    break;
-                default:
-                    Console.WriteLine("Invalid option.Please try again");
-                    break;
-            }
-
+            video.DisplayVideoDetails();
         }
-
     }
 }
